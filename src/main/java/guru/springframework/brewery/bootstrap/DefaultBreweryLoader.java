@@ -11,9 +11,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-/**
- * Created by jt on 2019-01-26.
- */
 @Component
 public class DefaultBreweryLoader implements CommandLineRunner {
 
@@ -34,7 +31,7 @@ public class DefaultBreweryLoader implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         loadBreweryData();
     }
 
@@ -103,7 +100,7 @@ public class DefaultBreweryLoader implements CommandLineRunner {
                     .orderStatus(OrderStatusEnum.NEW)
                     .customer(testCustomer)
                     .customerRef("testOrder1")
-                    .orderStatusCallbackUrl("http://example.com/post")
+                    .orderStatusCallbackUrl("https://example.com/post")
                     .beerOrderLines(orderLines1)
                     .build());
 

@@ -34,7 +34,7 @@ public class BeerOrderAllocationService {
 
         List<BeerOrder> newOrders = beerOrderRepository.findAllByOrderStatus(OrderStatusEnum.NEW);
 
-        if (newOrders.size() > 0 ) {
+        if (!newOrders.isEmpty()) {
 
             log.debug("Number of orders found to allocate: " + newOrders.size());
 
