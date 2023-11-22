@@ -9,6 +9,8 @@ import org.hibernate.type.Type;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 /**
  * Catch order updates
  */
@@ -23,14 +25,15 @@ public class OrderHeaderInterceptor extends EmptyInterceptor {
     }
 
     @Override
-    public boolean onFlushDirty(Object entity, Object id, Object[] currentState, Object[] previousState, String[] propertyNames, Type[] types) {
+    public boolean onFlushDirty(Object entity, Serializable id, Object[] currentState, Object[] previousState, String[] propertyNames, Type[] types) {
 
         if (entity instanceof BeerOrder){
             for(Object curObj : currentState){
                 if(curObj instanceof OrderStatusEnum){
                     for (Object prevObj : previousState){
-                        if (prevObj instanceof OrderStatusEnum prevStatus) {
+                        if (prevObj instanceof OrderStatusEnum) {
                             OrderStatusEnum curStatus = (OrderStatusEnum) curObj;
+                            OrderStatusEnum prevStatus = (OrderStatusEnum) prevObj;
 
                             if(curStatus != prevStatus){
                                 log.debug("Order status change detected");

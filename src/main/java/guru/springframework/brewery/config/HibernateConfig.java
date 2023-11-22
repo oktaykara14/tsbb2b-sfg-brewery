@@ -1,5 +1,6 @@
 package guru.springframework.brewery.config;
 
+import guru.springframework.brewery.interceptors.OrderHeaderInterceptor;
 import org.hibernate.Interceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernatePropertiesCustomizer;
@@ -14,7 +15,7 @@ import java.util.Map;
 public class HibernateConfig implements HibernatePropertiesCustomizer {
 
     @Autowired
-    Interceptor orderHeaderInterceptor;
+    OrderHeaderInterceptor orderHeaderInterceptor;
 
     @Override
     public void customize(Map<String, Object> hibernateProperties) {
