@@ -32,13 +32,13 @@ public class BeerServiceImpl implements BeerService {
         BeerPagedList beerPagedList;
         Page<Beer> beerPage;
 
-        if (StringUtils.hasLength(beerName) && StringUtils.hasLength(String.valueOf(beerStyle))) {
+        if (StringUtils.hasLength(beerName) && beerStyle!=null) {
             //search both
             beerPage = beerRepository.findAllByBeerNameAndBeerStyle(beerName, beerStyle, pageRequest);
         } else if (StringUtils.hasLength(beerName)) {
             //search beer name
             beerPage = beerRepository.findAllByBeerName(beerName, pageRequest);
-        } else if (StringUtils.hasLength(String.valueOf(beerStyle))) {
+        } else if (beerStyle!=null) {
             //search beer style
             beerPage = beerRepository.findAllByBeerStyle(beerStyle, pageRequest);
         } else {
