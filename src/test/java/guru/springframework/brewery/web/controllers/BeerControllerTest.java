@@ -73,7 +73,7 @@ class BeerControllerTest {
 
     @Test
     void testGetBeerById() throws Exception {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'H:mm:ssZ");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ");
 
         given(beerService.findBeerById(any())).willReturn(validBeer);
 
